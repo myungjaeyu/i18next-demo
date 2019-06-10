@@ -1,44 +1,27 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import TypoGraphy from '@material-ui/core/Typography';
-import { MultiLang, Determinator } from "react-multi-language";
+import React from 'react'
 
-import './Header.css';
+export default ({ t, i18n }) => {
 
-function Header(props) {
-  return (
-    <div>
-      <AppBar color="primary" position="static">
-        <Toolbar>
-          <NavLink exact to="/" className="link" activeClassName="active">
-            <TypoGraphy variant="h6" color="inherit">
-              {props.t('Home')}
-            </TypoGraphy>
-          </NavLink>
-          <NavLink to="/about" className="link" activeClassName="active">
-            <TypoGraphy variant="h6" color="inherit">
-              {props.t('About')}
-            </TypoGraphy>
-          </NavLink>
-          <NavLink to="/faq" className="link" activeClassName="active">
-            <TypoGraphy variant="h6" color="inherit">
-              {props.t('Faq')}
-            </TypoGraphy>
-          </NavLink>
-          <NavLink to="/notice" className="link" activeClassName="active">
-            <TypoGraphy variant="h6" color="inherit">
-              {props.t('Notice')}
-            </TypoGraphy>
-          </NavLink>
-          <TypoGraphy variant="h6" color="inherit" onClick={() => props.i18n.changeLanguage(props.i18n.language === 'ENG' ? 'KOR' : 'ENG')}>
-            {props.i18n.language}
-          </TypoGraphy>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+    const handleLanguage = _ => i18n.changeLanguage(i18n.language === 'ENG' ? 'KOR' : 'ENG')
+
+    return (
+        <div>
+
+            <p> { t('Home') } </p>
+
+            <p> { t('About') } </p>
+
+            <p> { t('Faq') } </p>
+
+            <p> { t('Notice') } </p>
+
+            <button onClick={ handleLanguage }>
+
+                { i18n.language }
+
+            </button>
+
+        </div>
+    )
+
 }
-
-export default Header;
